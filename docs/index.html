@@ -32,12 +32,10 @@
   <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
   
   <script>
-
-        var bounds = new L.LatLngBounds(
-            new L.LatLng(-85.051129, -180.000000),
-            new L.LatLng(85.051129, 179.996527));
-        var map = L.map('map').fitBounds(bounds);
+        var map = L.map('map').setView()
         var options = {
+            center: [98, 0],
+            zoom: 4,
             minZoom: 0,
             maxZoom: 8,
             opacity: 1.0,
