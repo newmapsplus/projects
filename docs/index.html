@@ -41,7 +41,7 @@
             opacity: 1.0,
             tms: true
         };
-        L.tileLayer(':https://outragegis.com/tiles/world/ne_v01/{z}/{x}/{y}.jpg', options).addTo(map);
+        L.tileLayer('https://outragegis.com/tiles/world/ne_v01/{z}/{x}/{y}.jpg', options).addTo(map);
 
         $.getJSON("students.geojson", function (data) {
 
