@@ -33,28 +33,28 @@
 
 
     <script>
-        var map = L.map('map', {
-      center: [36, -94],
-      zoom: 4,
-      tms: true
-    });
+     var bounds = new L.LatLngBounds(
+            new L.LatLng(-40, -100.000000),
+            new L.LatLng(70, 100));
+        var map = L.map('map').fitBounds(bounds);
+        var options = {
+            minZoom: 0,
+            maxZoom: 8,
+            opacity: 1.0,
+            tms: true
+        };
+    var tiles = L.tileLayer('https://outragegis.com/tiles/world/ne_v01/{z}/{x}/{y}.jpg', options).addTo(map);
 
-    var tiles = L.tileLayer('https://outragegis.com/tiles/world/ne_v01/{z}/{x}/{y}.jpg');
+        $.getJSON("students.geojson", function (data) {
 
-    tiles.addTo(map);
-
-        // L.tileLayer('https://outragegis.com/tiles/world/ne_v01/{z}/{x}/{y}.jpg', options).addTo(map);
-
-        // $.getJSON("students.geojson", function (data) {
-
-        //     var students = L.geoJson(data, {
+            var students = L.geoJson(data, {
                 
-        //     });
+            });
 
-        //     // Add layer to map!
-        //     students.addTo(map)
+            // Add layer to map!
+            students.addTo(map)
 
-        // });
+        });
     </script>
 
 </body>
