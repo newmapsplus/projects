@@ -6,7 +6,8 @@
     <title>NMP</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+        crossorigin="" />
 
     <style>
         body {
@@ -15,11 +16,11 @@
         }
 
         #map {
-        width: 100%;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-    
+            width: 100%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+
         }
     </style>
 </head>
@@ -29,26 +30,36 @@
 
     <div id='map'></div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+        crossorigin=""></script>
 
 
     <script>
-     var bounds = new L.LatLngBounds(
-            new L.LatLng(-40, -100.000000),
-            new L.LatLng(70, 100));
-        var map = L.map('map').fitBounds(bounds);
+        var map = L.map('map').setView([45, -45], 3);
         var options = {
             minZoom: 0,
-            maxZoom: 8,
-            opacity: 1.0,
-            tms: true
+            maxZoom: 20,
+            opacity: 1,
+            tms: true,
+            attribution: 'Elevation &copy; <a href="https://www.naturalearthdata.com/">Natural Earth</a>'
         };
-    var tiles = L.tileLayer('https://outragegis.com/tiles/world/ne_v01/{z}/{x}/{y}.jpg', options).addTo(map);
+        var tiles = L.tileLayer('https://outragegis.com/tiles/world/ne_v01/{z}/{x}/{y}.jpg', options).addTo(map);
+
+        var Stamen_TonerLite = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', {
+            attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            subdomains: 'abcd',
+            minZoom: 0,
+            maxZoom: 20,
+            opacity: 0.5,
+            ext: 'png'
+        });
+
+        Stamen_TonerLite.addTo(map);
 
         $.getJSON("students.geojson", function (data) {
 
             var students = L.geoJson(data, {
-                
+
             });
 
             // Add layer to map!
