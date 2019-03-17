@@ -142,6 +142,8 @@
         $('html').click(function() {
             var switched = document.getElementById("container")
             switched.style.display = "none"
+            switched = document.getElementById("logo")
+            switched.style.display = "none"
         });
 
         $.getJSON("students.geojson", function (data) {
