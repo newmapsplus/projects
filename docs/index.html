@@ -3,17 +3,15 @@
 
 <head>
     <meta charset=utf-8 />
-    <title>NMP</title>
+    <title>NMP Students and Alumni</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-
-    <link rel="stylesheet" href="assets/style.css">
-
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
         crossorigin="" />
     <link rel="stylesheet" href="assets/MarkerCluster.css">
     <link rel="stylesheet" href="assets/MarkerCluster.Default.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Varela+Round" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
 
     <style>
 
@@ -29,7 +27,7 @@
         <div class='contentBlock'>
             <img src="assets/nmp-logo.png" class="logoImg">
             <div class='logoHeader'>
-                <h1>Meet our students and alumni</h1>
+                <h1>Meet our students and alums</h1>
                 <h2><a href="#">Click to explore</a></h2>
             </div>
             <img src="https://uky-gis.github.io/graphics/logo-color-400px.png" class="ukyLogo">
@@ -40,16 +38,18 @@
     <div id='footer'>
         <div class="row">
             <div class="first-column">
-                <h1>Meet our students & alumni</h1>
+                <h1>Meet our students & alums</h1>
                 <h2>Legend</h2>
-                <p><img src="assets/nmp-flag.svg" class="icon">Our student!</p>
-                <p><img src="assets/nmp-globe-background-40.png" class="icon">Areas with more than one student</p>
-                <p><img src="assets/nmp-globe-background-orange-40.png" class="icon">Areas with more than twenty students</p>
+                <p><img src="assets/nmp-flag.svg" class="icon">A student or alum!</p>
+                <p><img src="assets/nmp-globe-background-40.png" class="icon">Areas with more than one</p>
+                <p><img src="assets/nmp-globe-background-orange-40.png" class="icon">Areas with more than twenty</p>
             </div>
             <div class="column">
-                <a href="https://newmapsplus.as.uky.edu/"><img src="assets/nmp-logo.png" class="ukyLogo" alt="New Maps Plus Online Mapping Program"  title="New Maps Plus Online Mapping Program"></a>
-                
-                <a href="https://geography.as.uky.edu/"><img src="https://uky-gis.github.io/graphics/logo-color-400px.png" class="ukyLogo" alt="University of Kentucky Geography Department" title="University of Kentucky Geography Department"></a>
+                <a href="https://newmapsplus.as.uky.edu/"><img src="assets/nmp-logo.png" class="ukyLogo" alt="New Maps Plus Online Mapping Program"
+                        title="New Maps Plus Online Mapping Program"></a>
+
+                <a href="https://geography.as.uky.edu/"><img src="https://uky-gis.github.io/graphics/logo-color-400px.png"
+                        class="ukyLogo" alt="University of Kentucky Geography Department" title="University of Kentucky Geography Department"></a>
 
 
             </div>
@@ -90,7 +90,7 @@
             shadowSize: [50, 25], // size of the shadow
             iconAnchor: [25, 50], // point of the icon which will correspond to marker's location
             shadowAnchor: [10, 25], // the same for the shadow
-            popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+            popupAnchor: [0, -55] // point from which the popup should open relative to the iconAnchor
         });
 
         Stamen_TonerLite.addTo(map);
@@ -139,7 +139,9 @@
                 },
 
                 onEachFeature: function (feature, layer) {
-                    var popup = "<h2>A student from " + feature.properties.City + ", " + feature.properties.State + "</h2>"
+                    var city = titleCase(feature.properties.City)
+                    var popup = "<h2>A mapper in " + city + ", " + feature.properties.State +
+                        "</h2>"
                     if (L.Browser.mobile) {
                         layer.bindPopup(popup)
                     } else {
@@ -158,7 +160,18 @@
 
         });
 
-        /* --------------- Toggle on/off info footer content ---------------  */
+        /* Make sure title case is enforced! */
+
+        var titleCase = function (str) {
+            str = str.toLowerCase().split(' ');
+            for (var i = 0; i < str.length; i++) {
+                str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+            }
+            return str.join(' ');
+        };
+
+        /* Toggle on/off info footer content  */
+
         var clicked = false
 
         var x = document.getElementById('footer');
