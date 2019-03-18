@@ -49,13 +49,13 @@
             z-index: 1001;
         }
 
-        .logoTxt {
+        .contentBlock {
             width: 70vw;
             margin: 0 auto;
             text-align: center;
             position: relative;
-            top: 40%;
-            transform: translate(0, -60%)
+            top: 50%;
+            transform: translate(0, -50%)
         }
 
         .logoImg {
@@ -73,7 +73,7 @@
             font-size: 3em;
         }
 
-        .ukyLogo{
+        .ukyLogo {
             /* width="300px" */
             max-width: 200px;
         }
@@ -160,6 +160,11 @@
                 float: right;
             }
 
+            .contentBlock {
+                top: 30%;
+                transform: translate(0, -70%)
+            }
+
         }
 
         @media screen and (max-height: 800px) and (orientation: landscape) {
@@ -172,24 +177,42 @@
 
             #logo h2 {
                 font-size: 1.4em;
-                margin: 0 0 40px 0;
+                margin: 0 0 50px 0;
+            }
+
+            #logo img {
+                float: left;
+                margin: 0 0 10px 0;
+
             }
 
             .logoImg {
-                height: 20vh;
-                width: auto;
-                float: left;
-                margin: 0 0 10px 0;
-            }
-
-            .ukyLogo{
-                float: left;
-                margin: 0 0 10px 0;
+                width: 200px;
             }
 
             .logoHeader {
                 width: 50%;
                 float: right;
+            }
+
+            .contentBlock {
+                top: 20%;
+                transform: translate(0, -80%)
+            }
+
+        }
+
+        @media screen and (max-width: 500px) {
+            /* and (orientation: landscape)  */
+
+            #logo h1 {
+                font-size: 1.5em;
+                margin: 0 0 10px 0;
+            }
+
+            #logo h2 {
+                font-size: 1em;
+                margin: 0 0 40px 0;
             }
 
         }
@@ -202,13 +225,13 @@
     <div id='map'></div>
     <div id="container"></div>
     <div id="logo">
-        <div class='logoTxt'>
+        <div class='contentBlock'>
             <img src="assets/nmp-logo.png" class="logoImg">
             <div class='logoHeader'>
                 <h1>Meet our students and alumni</h1>
                 <h2>Click to explore</h2>
             </div>
-            <img src="https://uky-gis.github.io/graphics/logo-color-400px.png"  class="ukyLogo">
+            <img src="https://uky-gis.github.io/graphics/logo-color-400px.png" class="ukyLogo">
         </div>
     </div>
     <button id="info-button">Enable Legend</button>
