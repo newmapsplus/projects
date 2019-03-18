@@ -72,6 +72,23 @@ a:hover {
     font-weight: 300;
 }
 
+#footer {
+    width: 100%;
+    background: rgba(244, 244, 244, 0.8);
+    color: rgba(20, 20, 20, 0.8);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    height: 0px;
+    padding: 0px;
+    z-index: 2000;
+    position: absolute;
+    bottom: 0px;
+    overflow: scroll;
+}
+
+#footer .row{
+    margin: 0 10px;
+}
+
 #footer h1 {
     font-size: 1.5em;
     margin: 5px 0;
@@ -99,6 +116,7 @@ a:hover {
 
 #footer .column img {
     float: right;
+    margin: 10px 0 0 0;
 }
 
 .ukyLogo {
@@ -146,32 +164,15 @@ a:hover {
     cursor: pointer;
 }
 
-#footer {
-    width: 100%;
-    background: rgba(244, 244, 244, 0.8);
-    color: rgba(20, 20, 20, 0.8);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    height: 0px;
-    padding: 0px;
-    z-index: 2000;
-    position: absolute;
-    bottom: 0px;
-    overflow: scroll;
-}
-
-#footer div {
-    padding: 10px;
-}
-
 /* Use float property to make two-column layout */
 .first-column {
     float: left;
-    width: 48%;
+    width: 49%;
     padding-right: 2%;
 }
 .column {
     float: left;
-    width: 48%;
+    width: 49%;
 }
 /* Clear floats after the columns */
 .row::after {
@@ -270,7 +271,13 @@ a:hover {
 }
 
 #footer .column img {
-    float: left;
+    float: none;
+    margin: 20px 0 0 0;
 }
+
+#footer .column {
+    text-align: center;
+}
+
 
 }
