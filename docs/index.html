@@ -44,7 +44,7 @@
                 <h2>Legend</h2>
                 <p><img src="assets/nmp-flag.svg" class="icon">Our student!</p>
                 <p><img src="assets/nmp-globe-background-40.png" class="icon">Areas more than one student</p>
-                <p><img src="assets/nmp-globe-background-orange-40.png" class="icon">Areas more than thirty students</p>
+                <p><img src="assets/nmp-globe-background-orange-40.png" class="icon">Areas more than twenty students</p>
             </div>
             <div class="column">
                 <a href="https://newmapsplus.as.uky.edu/"><img src="assets/nmp-logo.png" class="ukyLogo" alt="New Maps Plus Online Mapping Program"  title="New Maps Plus Online Mapping Program"></a>
@@ -126,7 +126,6 @@
                     if (cluster.getChildCount() >= 20) {
                         options.className = 'clusterIcon02'
                     }
-                    console.log(options)
                     return L.divIcon(options);
                 }
             });
@@ -140,6 +139,12 @@
                 },
 
                 onEachFeature: function (feature, layer) {
+                    var popup = "<h2>A student from " + feature.properties.City + ", " + feature.properties.State + "</h2>"
+                    if (L.Browser.mobile) {
+                        layer.bindPopup(popup)
+                    } else {
+                        layer.bindPopup(popup)
+                    }
                     markers.addLayer(layer);
                 }
 
