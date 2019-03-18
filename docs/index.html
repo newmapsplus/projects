@@ -50,16 +50,23 @@
         }
 
         .logoTxt {
-            width: 80vw;
-            opacity: 1.0;
+            width: 70vw;
             margin: 0 auto;
-
+            text-align: center;
+            position: relative;
+            top: 40%;
+            transform: translate(0, -60%)
         }
 
-        #logo img {
-            width: 100%;
+        .logoImg {
+            width: 70%;
+            height: auto;
             opacity: 1.0;
             z-index: 1001;
+        }
+
+        #logo h1 {
+            font-size: 3em;
         }
 
         .clusterIcon01 {
@@ -72,9 +79,10 @@
 
         #clusterDiv {
             font-family: 'Varela Round', sans-serif;
+            color: #fff;
             font-size: 1.1em;
             text-align: center;
-            text-shadow: 0px 0px 4px #ffffff;
+            text-shadow: 0px 0px 4px #000;
             position: relative;
             top: 50%;
             transform: translate(0, -50%)
@@ -93,11 +101,13 @@
     <div id='map'></div>
     <div id="container"></div>
     <div id="logo">
-        <div class='logoText'>
-                <img src="assets/nmp-logo.svg">
-                <h1>Welcome to our students!</h1>
+        <div class='logoTxt'>
+            <img src="assets/nmp-logo.png" class="logoImg">
+            <h1>Meet our students and alumni</h1>
+            <h2>Click to explore</h2>
+            <img src="https://uky-gis.github.io/graphics/logo-color-400px.png" width="300px">
         </div>
-        
+
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
@@ -139,7 +149,7 @@
         Stamen_TonerLite.addTo(map);
 
         // remove banner svg on move
-        $('html').click(function() {
+        $('html').click(function () {
             var switched = document.getElementById("container")
             switched.style.display = "none"
             switched = document.getElementById("logo")
@@ -149,7 +159,7 @@
         $.getJSON("students.geojson", function (data) {
 
             var markers = L.markerClusterGroup({
-                maxClusterRadius: 40,
+                maxClusterRadius: 100,
 
                 polygonOptions: {
                     color: '#e18a0d',
@@ -166,7 +176,7 @@
                         iconSize: L.point(40, 40)
                     }
 
-                    if (cluster.getChildCount() >= 30) {
+                    if (cluster.getChildCount() >= 20) {
                         options.className = 'clusterIcon02'
                     }
                     console.log(options)
