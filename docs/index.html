@@ -6,6 +6,9 @@
     <title>NMP</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
+    <link rel="stylesheet" href="assets/style.css">
+
+
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
         crossorigin="" />
     <link rel="stylesheet" href="assets/MarkerCluster.css">
@@ -13,223 +16,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Varela+Round" rel="stylesheet">
 
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-size: 100%;
-            font-family: 'Open Sans', sans-serif;
-        }
 
-        a {
-            text-decoration: none;
-            color: #1aaaac;
-        }
-
-        a:hover {
-            text-decoration: underline;
-            color: #e18a0d;
-        }
-
-        #map {
-            width: 100%;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-
-        }
-
-        #container {
-            width: 100%;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            display: block;
-            opacity: 0.6;
-            background-color: #ffffff;
-            z-index: 1000;
-        }
-
-        #logo {
-            width: 100%;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            display: block;
-            opacity: 1.0;
-            z-index: 1001;
-        }
-
-        .contentBlock {
-            width: 70vw;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            top: 50%;
-            transform: translate(0, -50%)
-        }
-
-        .logoImg {
-            width: 70%;
-            height: auto;
-            opacity: 1.0;
-            z-index: 1001;
-        }
-
-        .logoHeader {
-            width: 100%;
-        }
-
-        #logo h1 {
-            font-size: 3em;
-        }
-
-        #logo h2 {
-            font-weight: 300;
-        }
-
-        .ukyLogo {
-            /* width="300px" */
-            max-width: 200px;
-        }
-
-        .clusterIcon01 {
-            background-image: url('assets/nmp-globe-background-40.png');
-        }
-
-        .clusterIcon02 {
-            background-image: url('assets/nmp-globe-background-orange-40.png');
-        }
-
-        #clusterDiv {
-            font-family: 'Varela Round', sans-serif;
-            color: #fff;
-            font-size: 1.1em;
-            text-align: center;
-            text-shadow: 0px 0px 4px #000;
-            position: relative;
-            top: 50%;
-            transform: translate(0, -50%)
-        }
-
-        #clusterDiv p {
-            font-size: 0.7em;
-            margin: -7px 0 0 0;
-        }
-
-        #info-button {
-            padding: 8px 5px;
-            font-size: 0.9em;
-            font-weight: bolder;
-            border: 0px solid rgba(51, 51, 51, 0.35);
-            background: rgba(255, 255, 255, 1);
-            color: #333;
-            box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-            border-radius: 5px;
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            z-index: 9999;
-            cursor: pointer;
-        }
-
-        #footer {
-            width: 100%;
-            background: rgba(244, 244, 244, 0.8);
-            color: rgba(20, 20, 20, 0.8);
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            height: 0px;
-            padding: 0px;
-            z-index: 2000;
-            position: absolute;
-            bottom: 0px;
-            overflow: scroll;
-        }
-
-        #footer div {
-            padding: 10px;
-        }
-
-        /* Smallest screens */
-        @media screen and (max-width: 900px) {
-            /* and (orientation: landscape)  */
-
-            #logo h1 {
-                font-size: 2em;
-                margin: 0 0 10px 0;
-            }
-
-            #logo h2 {
-                font-size: 1.4em;
-                margin: 0 0 40px 0;
-            }
-
-            #logo img {
-                width: 45%;
-                float: left;
-                margin: 0 0 10px 0;
-            }
-
-            .logoHeader {
-                width: 50%;
-                float: right;
-            }
-
-            .contentBlock {
-                top: 30%;
-                transform: translate(0, -70%)
-            }
-
-        }
-
-        @media screen and (max-height: 800px) and (orientation: landscape) {
-            /* and (orientation: landscape)  */
-
-            #logo h1 {
-                font-size: 2em;
-                margin: 0 0 10px 0;
-            }
-
-            #logo h2 {
-                font-size: 1.4em;
-                margin: 0 0 50px 0;
-            }
-
-            #logo img {
-                float: left;
-                margin: 0 0 10px 0;
-
-            }
-
-            .logoImg {
-                width: 200px;
-            }
-
-            .logoHeader {
-                width: 50%;
-                float: right;
-            }
-
-            .contentBlock {
-                top: 20%;
-                transform: translate(0, -80%)
-            }
-
-        }
-
-        @media screen and (max-width: 500px) {
-            /* and (orientation: landscape)  */
-
-            #logo h1 {
-                font-size: 1.5em;
-                margin: 0 0 10px 0;
-            }
-
-            #logo h2 {
-                font-size: 1em;
-                margin: 0 0 40px 0;
-            }
-
-        }
     </style>
 </head>
 
@@ -251,126 +38,142 @@
     <button id="info-button">Enable Legend</button>
     </div>
     <div id='footer'>
+        <div class="row">
+            <div class="first-column">
+                <h1>Meet our students & alumni</h1>
+                <h2>Legend</h2>
+                <p><img src="assets/nmp-flag.svg" class="icon">Our student!</p>
+                <p><img src="assets/nmp-globe-background-40.png" class="icon">Areas more than one student</p>
+                <p><img src="assets/nmp-globe-background-orange-40.png" class="icon">Areas more than thirty students</p>
+            </div>
+            <div class="column">
+                <a href="https://newmapsplus.as.uky.edu/"><img src="assets/nmp-logo.png" class="ukyLogo" alt="New Maps Plus Online Mapping Program"  title="New Maps Plus Online Mapping Program"></a>
+                
+                <a href="https://geography.as.uky.edu/"><img src="https://uky-gis.github.io/graphics/logo-color-400px.png" class="ukyLogo" alt="University of Kentucky Geography Department" title="University of Kentucky Geography Department"></a>
+
+
+            </div>
+        </div>
     </div>
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-            crossorigin=""></script>
-        <script src="assets/leaflet.markercluster.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+        crossorigin=""></script>
+    <script src="assets/leaflet.markercluster.js"></script>
 
 
-        <script>
-            var map = L.map('map').setView([38, -98], 5);
-            var options = {
+    <script>
+        var map = L.map('map').setView([38, -98], 5);
+        var options = {
+            minZoom: 0,
+            maxZoom: 9,
+            opacity: 1,
+            tms: true,
+            attribution: 'Elevation &copy; <a href="https://www.naturalearthdata.com/">Natural Earth</a>'
+        };
+        var tiles = L.tileLayer('https://outragegis.com/tiles/world/ne_v01/{z}/{x}/{y}.jpg', options).addTo(map);
+
+        var Stamen_TonerLite = L.tileLayer(
+            'https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', {
+                attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                subdomains: 'abcd',
                 minZoom: 0,
-                maxZoom: 9,
-                opacity: 1,
-                tms: true,
-                attribution: 'Elevation &copy; <a href="https://www.naturalearthdata.com/">Natural Earth</a>'
-            };
-            var tiles = L.tileLayer('https://outragegis.com/tiles/world/ne_v01/{z}/{x}/{y}.jpg', options).addTo(map);
-
-            var Stamen_TonerLite = L.tileLayer(
-                'https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', {
-                    attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-                    subdomains: 'abcd',
-                    minZoom: 0,
-                    maxZoom: 15,
-                    opacity: 0.5,
-                    ext: 'png'
-                });
-
-            var nmpIcon = L.icon({
-                iconUrl: 'assets/nmp-flag.svg',
-                shadowUrl: 'assets/nmp-flag-shadow.png',
-
-                iconSize: [50, 50], // size of the icon
-                shadowSize: [50, 25], // size of the shadow
-                iconAnchor: [25, 50], // point of the icon which will correspond to marker's location
-                shadowAnchor: [10, 25], // the same for the shadow
-                popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+                maxZoom: 15,
+                opacity: 0.5,
+                ext: 'png'
             });
 
-            Stamen_TonerLite.addTo(map);
+        var nmpIcon = L.icon({
+            iconUrl: 'assets/nmp-flag.svg',
+            shadowUrl: 'assets/nmp-flag-shadow.png',
 
-            // remove banner svg on move
-            $('html').click(function () {
-                var switched = document.getElementById("container")
-                switched.style.display = "none"
-                switched = document.getElementById("logo")
-                switched.style.display = "none"
-            });
+            iconSize: [50, 50], // size of the icon
+            shadowSize: [50, 25], // size of the shadow
+            iconAnchor: [25, 50], // point of the icon which will correspond to marker's location
+            shadowAnchor: [10, 25], // the same for the shadow
+            popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+        });
 
-            $.getJSON("students.geojson", function (data) {
+        Stamen_TonerLite.addTo(map);
 
-                var markers = L.markerClusterGroup({
-                    maxClusterRadius: 100,
+        // remove banner svg on move
+        $('html').click(function () {
+            var switched = document.getElementById("container")
+            switched.style.display = "none"
+            switched = document.getElementById("logo")
+            switched.style.display = "none"
+        });
 
-                    polygonOptions: {
-                        color: '#e18a0d',
-                        fillColor: '#e18a0d',
-                        dashArray: '1 4'
-                    },
+        $.getJSON("students.geojson", function (data) {
 
-                    iconCreateFunction: function (cluster) {
+            var markers = L.markerClusterGroup({
+                maxClusterRadius: 100,
 
-                        var options = {
-                            html: '<div id="clusterDiv">' + cluster.getChildCount() +
-                                '<p><b>more</b></p></div>',
-                            className: 'clusterIcon01',
-                            iconSize: L.point(40, 40)
-                        }
+                polygonOptions: {
+                    color: '#e18a0d',
+                    fillColor: '#e18a0d',
+                    dashArray: '1 4'
+                },
 
-                        if (cluster.getChildCount() >= 20) {
-                            options.className = 'clusterIcon02'
-                        }
-                        console.log(options)
-                        return L.divIcon(options);
-                    }
-                });
-                var students = L.geoJson(data, {
+                iconCreateFunction: function (cluster) {
 
-                    pointToLayer: function (geoJsonPoint, latlng) {
-                        return L.marker(latlng, {
-                            icon: nmpIcon
-                        });
-
-                    },
-
-                    onEachFeature: function (feature, layer) {
-                        markers.addLayer(layer);
+                    var options = {
+                        html: '<div id="clusterDiv">' + cluster.getChildCount() +
+                            '<p><b>more</b></p></div>',
+                        className: 'clusterIcon01',
+                        iconSize: L.point(40, 40)
                     }
 
-
-                });
-
-                // Add layer to map!
-                // students.addTo(map)
-
-                markers.addTo(map)
-
-            });
-
-            /* --------------- Toggle on/off info footer content ---------------  */
-            var clicked = false
-
-            var x = document.getElementById('footer');
-            var y = document.getElementById('info-button');
-
-            y.onclick = function () {
-
-                if (clicked === true) {
-                    x.style.height = '0px';
-                    y.style.background = 'rgba(255, 255, 255, 1)'
-                    y.innerHTML = "Legend"
-                    clicked = false
-                } else {
-                    x.style.height = '50vh';
-                    y.style.background = 'rgba(225, 138, 13, 1)'
-                    y.innerHTML = "Legend"
-                    clicked = true
+                    if (cluster.getChildCount() >= 20) {
+                        options.className = 'clusterIcon02'
+                    }
+                    console.log(options)
+                    return L.divIcon(options);
                 }
+            });
+            var students = L.geoJson(data, {
+
+                pointToLayer: function (geoJsonPoint, latlng) {
+                    return L.marker(latlng, {
+                        icon: nmpIcon
+                    });
+
+                },
+
+                onEachFeature: function (feature, layer) {
+                    markers.addLayer(layer);
+                }
+
+
+            });
+
+            // Add layer to map!
+            // students.addTo(map)
+
+            markers.addTo(map)
+
+        });
+
+        /* --------------- Toggle on/off info footer content ---------------  */
+        var clicked = false
+
+        var x = document.getElementById('footer');
+        var y = document.getElementById('info-button');
+
+        y.onclick = function () {
+
+            if (clicked === true) {
+                x.style.height = '0px';
+                y.style.background = 'rgba(255, 255, 255, 1)'
+                y.innerHTML = "Legend"
+                clicked = false
+            } else {
+                x.style.height = '70vh';
+                y.style.background = 'rgba(225, 138, 13, 1)'
+                y.innerHTML = "Legend"
+                clicked = true
             }
-        </script>
+        }
+    </script>
 
 </body>
 
