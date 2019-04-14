@@ -3,7 +3,7 @@
 
 <head>
     <meta charset=utf-8 />
-    <title>NMP Students and Alumni</title>
+    <title>NMP Student projects</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
@@ -14,6 +14,11 @@
     <link rel="stylesheet" href="assets/style.css">
 
     <style>
+
+.leaflet-popup-content h2{
+    margin-bottom: 2px;
+}
+
 
     </style>
 </head>
@@ -27,7 +32,7 @@
         <div class='contentBlock'>
             <img src="assets/nmp-logo.png" class="logoImg">
             <div class='logoHeader'>
-                <h1>Meet our students and alums</h1>
+                <h1>A collection of student projects</h1>
                 <h2><a href="#">Click to explore</a></h2>
             </div>
             <img src="https://uky-gis.github.io/graphics/logo-color-400px.png" class="ukyLogo">
@@ -38,11 +43,11 @@
     <div id='footer'>
         <div class="row">
             <div class="first-column">
-                <h1>Meet our students & alums</h1>
+                <h1>A collection of student projects</h1>
                 <!-- <h2>Legend</h2> -->
-                <p><img src="assets/nmp-flag.svg" class="icon">A student or alum!</p>
-                <p><img src="assets/nmp-globe-background-40.png" class="icon">Areas with more than one mapper.</p>
-                <p><img src="assets/nmp-globe-background-orange-40.png" class="icon">Areas with more than twenty mappers.</p>
+                <p><img src="assets/nmp-flag.svg" class="icon">A student project</p>
+                <p><img src="assets/nmp-globe-background-40.png" class="icon">Areas with more than one project.</p>
+                <p><img src="assets/nmp-globe-background-orange-40.png" class="icon">Areas with more than twenty projects.</p>
             </div>
             <div class="column">
                 <a href="https://newmapsplus.as.uky.edu/"><img src="assets/nmp-logo.png" class="ukyLogo" alt="New Maps Plus Online Mapping Program"
@@ -103,7 +108,7 @@
             switched.style.display = "none"
         });
 
-        $.getJSON("students.geojson", function (data) {
+        $.getJSON("projects.geojson", function (data) {
 
             var markers = L.markerClusterGroup({
                 maxClusterRadius: 100,
@@ -139,9 +144,21 @@
                 },
 
                 onEachFeature: function (feature, layer) {
-                    var city = titleCase(feature.properties.City)
-                    var popup = "<h2>A mapper in " + city + ", " + feature.properties.State +
-                        "</h2>"
+                    // var city = titleCase(feature.properties.City)
+                    var t = feature.properties
+                    if (t.info == null) { 
+                        var info = ""
+                    } else {
+                        var info = t.info
+                    }
+                    if (t.author == null) { 
+                        var author = ""
+                    } else {
+                        var author = t.author
+                    }
+                    var popup = "<h2>" + t.title + "</h2>" + info + "<br><img src='" + t.thumb + "' width='100%'>" +
+                                "<a href='" + t.link +"'>Link</a><br>" + author
+
                     if (L.Browser.mobile) {
                         layer.bindPopup(popup)
                     } else {
