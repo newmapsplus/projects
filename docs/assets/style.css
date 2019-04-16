@@ -121,6 +121,11 @@ a:hover {
     float: right;
     margin: 10px 0 0 0;
 }
+#footer .link {
+    position: relative;
+    top: 15px;
+    text-decoration: underline;
+}
 
 .ukyLogo {
     /* width="300px" */
