@@ -12,6 +12,10 @@ a {
     text-shadow:    0 0 1px #fff;
 }
 
+#footer a {
+    text-decoration: underline;
+}
+
 a:hover {
     text-decoration: underline;
     color: #e18a0d;
@@ -123,13 +127,17 @@ a:hover {
 }
 #footer .link {
     position: relative;
-    top: 15px;
-    text-decoration: underline;
+    top: 20px;
+    text-decoration: none;
 }
 
 .ukyLogo {
     /* width="300px" */
     max-width: 200px;
+}
+
+iframe {
+    margin: 5px 0 0 0;
 }
 
 .clusterIcon01 {
