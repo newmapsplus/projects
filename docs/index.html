@@ -160,8 +160,12 @@
                     } else {
                         var author = t.author
                     }
-                    var popup = "<h2>" + t.title + "</h2>" + info + "<br><img src='" + t.thumb + "' width='100%'>" +
-                                "<a href='" + t.link +"'>Link</a><br>" + author
+                    var popup = `<h2>${t.title}</h2>
+                                <p>${info}</p>
+                                <a href='${t.link}' target='_blank'>
+                                <img src='${t.thumb}' width='100%'>
+                                Link</a></p>
+                                <p><i>${author}</i></p>`
 
                     if (L.Browser.mobile) {
                         layer.bindPopup(popup)

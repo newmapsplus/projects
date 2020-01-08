@@ -205,6 +205,16 @@ iframe {
     font-weight: 300;
     font-family: 'Open Sans', sans-serif;
     color: white;
+    font-size: 1.2em;
+}
+
+.leaflet-popup-content p {
+    margin: 2px 0px 5px 0px;
+}
+
+.leaflet-popup-content a {
+    font-weight: 700;
+    color: #222;
 }
 
 .leaflet-popup-close-button {
