@@ -6,7 +6,8 @@
     <title>NMP Student projects</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+        integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
         crossorigin="" />
     <link rel="stylesheet" href="assets/MarkerCluster.css">
     <link rel="stylesheet" href="assets/MarkerCluster.Default.css">
@@ -14,12 +15,9 @@
     <link rel="stylesheet" href="assets/style.css">
 
     <style>
-
-.leaflet-popup-content h2{
-    margin-bottom: 2px;
-}
-
-
+        .leaflet-popup-content h2 {
+            margin-bottom: 2px;
+        }
     </style>
 </head>
 
@@ -45,27 +43,32 @@
             <div class="first-column">
                 <h1>A collection of student projects</h1>
                 <!-- <h2>Legend</h2> -->
-                <p><img src="assets/nmp-flag.svg" class="icon">A student project. <a href="alums">Meet our alums!</a></p>
+                <p><img src="assets/nmp-flag.svg" class="icon">A student project. <a href="alums">Meet our alums!</a>
+                </p>
                 <!-- <p><img src="assets/nmp-globe-background-40.png" class="icon">Areas with more than one project.</p> -->
                 <!-- <p><img src="assets/nmp-globe-background-orange-40.png" class="icon">Areas with more than twenty projects.</p> -->
-                
+
                 <p class="link">How to contribute to this map:</p>
-                <iframe src="https://player.vimeo.com/video/333473307" width="400" height="auto" class="ukyLogo" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-                
+                <iframe src="https://player.vimeo.com/video/333473307" width="400" height="auto" class="ukyLogo"
+                    frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+
 
             </div>
             <div class="column">
-                <a href="https://newmapsplus.as.uky.edu/"><img src="assets/nmp-logo.png" class="ukyLogo" alt="New Maps Plus Online Mapping Program"
-                        title="New Maps Plus Online Mapping Program"></a>
+                <a href="https://newmapsplus.as.uky.edu/"><img src="assets/nmp-logo.png" class="ukyLogo"
+                        alt="New Maps Plus Online Mapping Program" title="New Maps Plus Online Mapping Program"></a>
 
-                <a href="https://geography.as.uky.edu/"><img src="https://uky-gis.github.io/graphics/logo-color-400px.png"
-                        class="ukyLogo" alt="University of Kentucky Geography Department" title="University of Kentucky Geography Department"></a>
-                       
+                <a href="https://geography.as.uky.edu/"><img
+                        src="https://uky-gis.github.io/graphics/logo-color-400px.png" class="ukyLogo"
+                        alt="University of Kentucky Geography Department"
+                        title="University of Kentucky Geography Department"></a>
+
             </div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+        integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
         crossorigin=""></script>
     <script src="assets/leaflet.markercluster.js"></script>
 
@@ -83,13 +86,13 @@
 
         var Stamen_TonerLite = L.tileLayer(
             'https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', {
-                attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-                subdomains: 'abcd',
-                minZoom: 0,
-                maxZoom: 12,
-                opacity: 0.5,
-                ext: 'png'
-            });
+            attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            subdomains: 'abcd',
+            minZoom: 0,
+            maxZoom: 12,
+            opacity: 0.5,
+            ext: 'png'
+        });
 
         var nmpIcon = L.icon({
             iconUrl: 'assets/nmp-flag.svg',
@@ -150,12 +153,12 @@
                 onEachFeature: function (feature, layer) {
                     // var city = titleCase(feature.properties.City)
                     var t = feature.properties
-                    if (t.info == null) { 
+                    if (t.info == null) {
                         var info = ""
                     } else {
                         var info = t.info
                     }
-                    if (t.author == null) { 
+                    if (t.author == null) {
                         var author = ""
                     } else {
                         var author = t.author
